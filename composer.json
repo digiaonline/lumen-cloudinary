@@ -1,12 +1,7 @@
 {
     "name": "nordsoftware/lumen-cloudinary",
     "description": "Cloudinary module for the Lumen framework.",
-    "require": {
-        "enl/flysystem-cloudinary": "dev-master"
-    },
-    "require-dev": {
-        "laravel/lumen-framework": "^5.2@dev"
-    },
+    "keywords": ["laravel", "lumen", "cloudinary", "filesystem"],
     "license": "MIT",
     "authors": [
         {
@@ -14,5 +9,16 @@
             "email": "christofferniska@gmail.com"
         }
     ],
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "require": {
+        "enl/flysystem-cloudinary": "dev-master"
+    },
+    "require-dev": {
+        "laravel/lumen-framework": "^5.2@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nord\\Lumen\\Cloudinary\\": "src"
+        }
+    }
 }
