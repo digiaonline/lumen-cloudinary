@@ -9,9 +9,8 @@
             "email": "christofferniska@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
-        "enl/flysystem-cloudinary": "dev-master"
+        "enl/flysystem-cloudinary": "^1.0"
     },
     "require-dev": {
         "laravel/lumen-framework": "^5.2@dev"
