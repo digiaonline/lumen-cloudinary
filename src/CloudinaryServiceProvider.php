@@ -1,6 +1,6 @@
 <?php namespace Nord\Lumen\Cloudinary;
 
-use Enl\Flysystem\Cloudinary\ApiFacade;
+use Enl\Flysystem\Cloudinary\ApiFacade as CloudinaryClient;
 use Enl\Flysystem\Cloudinary\CloudinaryAdapter;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\ServiceProvider;
@@ -16,15 +16,11 @@ class CloudinaryServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Storage::extend('cloudinary', function ($config) {
-            $cloudName = array_get($config, 'cloudName', env('CLOUDINARY_NAME'));
-            $apiKey    = array_get($config, 'apiKey', env('CLOUDINARY_KEY'));
-            $apiSecret = array_get($config, 'apiSecret', env('CLOUDINARY_SECRET'));
-
-            $client = new ApiFacade([
-                'cloud_name' => $cloudName,
-                'api_key'    => $apiKey,
-                'api_secret' => $apiSecret,
+        Storage::extend('cloudinary', function ($app, $config) {
+            $client = new CloudinaryClient([
+                'cloud_name' => $config['name'],
+                'api_key'    => $config['key'],
+                'api_secret' => $config['secret'],
             ]);
 
             return new Filesystem(new CloudinaryAdapter($client));
@@ -37,6 +33,6 @@ class CloudinaryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
+        //
     }
 }
